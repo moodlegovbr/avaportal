@@ -1,175 +1,118 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+{% get_media_prefix as MEDIA_PREFIX  %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Ambiente Virtual de Aprendizagem - AVA / IFRN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ambiente Virtual de Aprendizagem - AVA / IFRN</title>
 
-   <!-- Import do CSS do Bootstrap -->
-   <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{STATIC_PREFIX}}img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{STATIC_PREFIX}}img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{STATIC_PREFIX}}img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{STATIC_PREFIX}}img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="{{STATIC_PREFIX}}img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Favicon -->
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap.min.css">
+    <style>
+        .navbar-nav .nav-item > .nav-link { color: #eee; }
+        .navbar.navbar-expand-lg.navbar-light.bg-light.mb-5 { background: #1571c4 !important; }
+        .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover { color: #fff; background: #0e7bdd;}
+        .card-img-top {opacity: 90%;}
+        .card-img-top:hover {opacity: 100%;}
+    </style>
+    <!-- Bootstrap -->
 </head>
 
+
 <body>
-
     <!-- ============================================================================ -->
-<!-- Cabeçalho da Página -->
-<header class="p-5">
-    <div class="container text-center">
-        <img src="img/logo_ifrn.png" alt="Logo IFRN">
-    </div>
-</header>
-    
-    <!-- ============================================================================ -->
-<!-- Barra de Navegação -->
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <!--
-                <li class="nav-item active">
-                    <a class="nav-link" href="https://ava.ifrn.edu.br/">Início <span class="sr-only">(atual)</span></a>
-                </li>
-                -->
-                <li class="nav-item">
-                    <a class="nav-link" href="https://portal.ifrn.edu.br/" target="blank">Portal IFRN</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://suap.ifrn.edu.br/" target="blank">SUAP</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Campi</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="https://portal.ifrn.edu.br/campus/curraisnovos">Currais Novos</a>
-                                                    <a class="dropdown-item" href="https://ava.cnat.ifrn.edu.br/login/index.php">Natal - Central</a>
-                                                    <a class="dropdown-item" href="https://ead.ifrn.edu.br/ava/academico/login/index.php">Natal - Zona Leste</a>
-                                                    <a class="dropdown-item" href="https://portal.ifrn.edu.br/campus/parnamirim">Parnamirim</a>
-                                                    <a class="dropdown-item" href="https://portal.ifrn.edu.br/campus/saogoncalo">São Gonçalo do Amarante</a>
-                                                    <a class="dropdown-item" href="https://portal.ifrn.edu.br/campus/sao-paulo-do-potengi">São Paulo do Potengi</a>
-                                                <!--
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        -->
-                    </div>
-                </li>
-                <!--
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-                -->
-            </ul>
-            <!--
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Busca" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Busca</button>
-            </form>
-            -->
+    <!-- Cabeçalho da Página -->
+    <header class="p-5">
+        <div class="container text-center">
+            <a href="https://portal.ifrn.edu.br" target="_blank"><img src="{{STATIC_PREFIX}}img/logo_ifrn.png" alt="Logo IFRN"></a>
         </div>
-    </div>
-</nav>
+    </header>
 
-
-     
-<!-- Laço para iterar a coluna -->
-<div class="container mb-5">
-    <!-- Iteração das Linhas -->
-            <div class="row">
-            <!-- Iteração das Colunas -->
-                            <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="img/campus_currais_novos.jpg" class="card-img-top" alt="img/campus_currais_novos.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title">Currais Novos</h5>
-                            <p class="card-text">Use o qrCode para configurar o app do Moodle para celulares e tablets.</p>
-                            <a href="https://portal.ifrn.edu.br/campus/curraisnovos" class="btn btn-primary">Acessar Moodle</a>
-                                                        <img src="qr_img0.50j/php/qr_img.php?d=https://portal.ifrn.edu.br/campus/curraisnovos&e=H&s=2&t=P" width="70" />
-                        </div>
-                    </div>
-                </div>
-                                            <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="img/campus_natal_central.jpg" class="card-img-top" alt="img/campus_natal_central.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title">Natal - Central</h5>
-                            <p class="card-text">Use o qrCode para configurar o app do Moodle para celulares e tablets.</p>
-                            <a href="https://ava.cnat.ifrn.edu.br/login/index.php" class="btn btn-primary">Acessar Moodle</a>
-                                                        <img src="qr_img0.50j/php/qr_img.php?d=https://ava.cnat.ifrn.edu.br/login/index.php&e=H&s=2&t=P" width="70" />
-                        </div>
-                    </div>
-                </div>
-                                            <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="img/campus_natal_zona_leste.jpg" class="card-img-top" alt="img/campus_natal_zona_leste.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title">Natal - Zona Leste</h5>
-                            <p class="card-text">Use o qrCode para configurar o app do Moodle para celulares e tablets.</p>
-                            <a href="https://ead.ifrn.edu.br/ava/academico/login/index.php" class="btn btn-primary">Acessar Moodle</a>
-                                                        <img src="qr_img0.50j/php/qr_img.php?d=https://ead.ifrn.edu.br/ava/academico/login/index.php&e=H&s=2&t=P" width="70" />
-                        </div>
-                    </div>
-                </div>
-                                            <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="img/campus_parnamirim.jpg" class="card-img-top" alt="img/campus_parnamirim.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title">Parnamirim</h5>
-                            <p class="card-text">Use o qrCode para configurar o app do Moodle para celulares e tablets.</p>
-                            <a href="https://portal.ifrn.edu.br/campus/parnamirim" class="btn btn-primary">Acessar Moodle</a>
-                                                        <img src="qr_img0.50j/php/qr_img.php?d=https://portal.ifrn.edu.br/campus/parnamirim&e=H&s=2&t=P" width="70" />
-                        </div>
-                    </div>
-                </div>
-                                                </div>
-            <div class="row">
-            <!-- Iteração das Colunas -->
-                            <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="img/campus_sao_goncalo_do_amarante.jpg" class="card-img-top" alt="img/campus_sao_goncalo_do_amarante.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title">São Gonçalo do Amarante</h5>
-                            <p class="card-text">Use o qrCode para configurar o app do Moodle para celulares e tablets.</p>
-                            <a href="https://portal.ifrn.edu.br/campus/saogoncalo" class="btn btn-primary">Acessar Moodle</a>
-                                                        <img src="qr_img0.50j/php/qr_img.php?d=https://portal.ifrn.edu.br/campus/saogoncalo&e=H&s=2&t=P" width="70" />
-                        </div>
-                    </div>
-                </div>
-                                            <div class="col-md-3">
-                    <div class="card mb-3">
-                        <img src="img/campus_sao_paulo_do_potengi.jpg" class="card-img-top" alt="img/campus_sao_paulo_do_potengi.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title">São Paulo do Potengi</h5>
-                            <p class="card-text">Use o qrCode para configurar o app do Moodle para celulares e tablets.</p>
-                            <a href="https://portal.ifrn.edu.br/campus/sao-paulo-do-potengi" class="btn btn-primary">Acessar Moodle</a>
-                                                        <img src="qr_img0.50j/php/qr_img.php?d=https://portal.ifrn.edu.br/campus/sao-paulo-do-potengi&e=H&s=2&t=P" width="70" />
-                        </div>
-                    </div>
-                </div>
-                                    </div>
-    </div>
     <!-- ============================================================================ -->
-<!-- Rodapé da Página -->
-<footer class="py-5 text-muted bg-light">
-    <div class="container">
+    <!-- Barra de Navegação -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://portal.ifrn.edu.br/" target="_blank">Portal IFRN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://suap.ifrn.edu.br/" target="_blank">SUAP</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Campi</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for campi in campus %}
+                            <a class="dropdown-item" href="{{campi.url}}">{{campi.descricao}}</a>
+                            {% endfor %}                            
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Laço para iterar a coluna -->
+    <div class="container mb-5">
+        <!-- <p class="card-text">Use o qrCode para configurar o app do Moodle para celulares e tablets.</p> -->
+        <!-- Iteração das Linhas -->
         <div class="row">
-            <div class="col-md-9">
-                <p>Todos os direitos reservados</p>
-            </div>
+            <!-- Iteração das Colunas -->
+            {% for campi in campus %}
             <div class="col-md-3">
-                <img src="img/logo_digti.png" alt="Logo DIGTI" width="75">
+                <div class="card mb-3">
+                    <a href="{{campi.url}}"><img src="{{MEDIA_PREFIX}}{{campi.thumbnail}}" class="card-img-top" alt="Foto do campus {{campi.descricao}}"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{campi.descricao}}</h5>
+                        <a href="{{campi.url}}" class="btn btn-primary">Acessar Moodle</a>
+                        <!-- <img src="/media/qrcode/{{campus.sigla}}.png" width="70" /> -->
+                    </div>
+                </div>
             </div>
+            {% endfor %}
         </div>
     </div>
-</footer>
-
     <!-- ============================================================================ -->
-    <!-- Import do jQuery + JS do Bootstrap -->
+    <!-- Rodapé da Página -->
+    <footer class="py-5 text-muted bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <p>Todos os direitos reservados</p>
+                </div>
+                <div class="col-md-3">
+                    <a href="https://portal.ifrn.edu.br/tec-da-informacao" target="_blank"><img src="{{STATIC_PREFIX}}img/logo_digti.png" alt="Logo DIGTI" width="75"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery + JS do Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{STATIC_PREFIX}}js/bootstrap.min.js"></script>
+    <!-- jQuery + JS do Bootstrap -->
 
 </body>
+
 </html>
