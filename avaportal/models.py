@@ -1,7 +1,11 @@
 from django.utils.translation import gettext as _
+from django.conf import settings
 from django.db.models import Model, ForeignKey, CASCADE, TextChoices
 from django.db.models import CharField, URLField, ImageField, DateTimeField, TextField
 from django.db.models import JSONField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 class Campus(Model):
     suap_id = CharField('ID no SUAP', max_length=255, unique=True)
@@ -37,3 +41,9 @@ class Solicitacao(Model):
         verbose_name = "Solicitação"
         verbose_name_plural = "Solicitações"
         ordering = ['id']
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_socialauth_suap_user(sender, instance=None, created=False, **kwargs):
+    from social_django.models import UserSocialAuth
+    UserSocialAuth.objects.update_or_create(user=instance, defaults={'provider': 'suap', 'uid': instance.username})
