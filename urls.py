@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 from avaportal.views import index
 
 urlpatterns = [
+    path('oauth/', include('social_django.urls', namespace='social')),
     path('admin/login/', RedirectView.as_view(url='/oauth/login/suap/')),
     path('admin/', admin.site.urls),
     path('', index),
