@@ -6,3 +6,6 @@ from .models import Campus
 def index(request):
     campus = Campus.objects.all()
     return render(request, 'avaportal/index.html', {'campus': campus})
+
+def sync_up(request):
+    pass

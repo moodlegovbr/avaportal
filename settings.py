@@ -4,7 +4,7 @@ from sc4py.env import env, env_as_bool, env_as_int, env_as_list
 DEBUG = env_as_bool("DJANGO_DEBUG", False)
 
 # Apps
-MY_APPS = env_as_list('MY_APPS', 'avaportal')
+MY_APPS = env_as_list('MY_APPS', 'avaportal,suap_ead')
 THIRD_APPS = env_as_list('THIRD_APPS', 'social_django,tabbed_admin,markdownx')
 DJANGO_APPS = env_as_list('DJANGO_APPS', 'django.contrib.admin,'
                                          'django.contrib.auth,'
@@ -33,13 +33,12 @@ ALLOWED_HOSTS = env_as_list('DJANGO_ALLOWED_HOSTS', '*' if DEBUG else '')
 USE_X_FORWARDED_HOST = env_as_bool('DJANGO_USE_X_FORWARDED_HOST', False)
 SECURE_PROXY_SSL_HEADER = env_as_list('DJANGO_SECURE_PROXY_SSL_HEADER', '')
 ROOT_URLCONF = env('DJANGO_ROOT_URLCONF', 'urls')
-URL_PATH_PREFIX = env('URL_PATH_PREFIX', '/')
-STATIC_URL = env('DJANGO_STATIC_URL', URL_PATH_PREFIX + 'static/')
-STATIC_ROOT = env('DJANGO_STATIC_ROOT', "/static" + URL_PATH_PREFIX)
-MEDIA_URL = env('DJANGO_MEDIA_URL', URL_PATH_PREFIX + 'media/')
-MEDIA_ROOT = env('DJANGO_MEDIA_ROOT', '/media' + URL_PATH_PREFIX)
-MARKDOWNX_URLS_PATH = env('MARKDOWNX_URLS_PATH', URL_PATH_PREFIX + 'markdownx/markdownify/')
-MARKDOWNX_UPLOAD_URLS_PATH = env('MARKDOWNX_UPLOAD_URLS_PATH', URL_PATH_PREFIX + 'markdownx/upload/')
+STATIC_URL = env('DJANGO_STATIC_URL', '/static/')
+STATIC_ROOT = env('DJANGO_STATIC_ROOT', "/static")
+MEDIA_URL = env('DJANGO_MEDIA_URL', '/media/')
+MEDIA_ROOT = env('DJANGO_MEDIA_ROOT', '/media')
+MARKDOWNX_URLS_PATH = env('MARKDOWNX_URLS_PATH', '/markdownx/markdownify/')
+MARKDOWNX_UPLOAD_URLS_PATH = env('MARKDOWNX_UPLOAD_URLS_PATH', '/markdownx/upload/')
 
 # Template engine
 TEMPLATES = [
@@ -140,15 +139,14 @@ SESSION_SERIALIZER = env("DJANGO_SESSION_SERIALIZER", 'django.contrib.sessions.s
 # }
 
 
-
 # Auth and Security... some another points impact on security, take care!
 SECRET_KEY = env("DJANGO_SECRET_KEY", 'changeme')
 AUTH_PASSWORD_VALIDATORS = []
-AUTHENTICATION_BACKENDS = ('cmdb.backends.SuapOAuth2',)
+AUTHENTICATION_BACKENDS = ('suap_ead.backends.SuapOAuth2',)
 SOCIAL_AUTH_SUAP_KEY = env('SOCIAL_AUTH_SUAP_KEY', 'changeme')
 SOCIAL_AUTH_SUAP_SECRET = env('SOCIAL_AUTH_SUAP_SECRET', 'changeme')
-LOGIN_URL = env('DJANGO_LOGIN_URL', URL_PATH_PREFIX + 'oauth/login/suap/')
-LOGIN_REDIRECT_URL = env('DJANGO_LOGIN_REDIRECT_URL', URL_PATH_PREFIX)
-# LOGOUT_URL = env('DJANGO_LOGOUT_URL', URL_PATH_PREFIX + 'logout/')
+LOGIN_URL = env('DJANGO_LOGIN_URL', '/oauth/login/suap/')
+LOGIN_REDIRECT_URL = env('DJANGO_LOGIN_REDIRECT_URL', '/admin/')
 # LOGOUT_REDIRECT_URL = env("DJANGO_LOGOUT_REDIRECT_URL", LOGIN_REDIRECT_URL)
 AUTH_USER_MODEL = env('DJANGO_AUTH_USER_MODEL', 'auth.User')
+SUAP_EAD_KEY = env('SUAP_EAD_KEY', 'changeme')
