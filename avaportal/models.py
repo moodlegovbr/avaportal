@@ -1,6 +1,6 @@
 from django.utils.translation import gettext as _
 from django.conf import settings
-from django.db.models import Model, ForeignKey, CASCADE, TextChoices
+from django.db.models import Model, ForeignKey, CASCADE, TextChoices, BooleanField
 from django.db.models import CharField, URLField, ImageField, DateTimeField, TextField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -12,6 +12,7 @@ class Campus(Model):
     descricao = CharField('Descrição', max_length=255)
     url = URLField('URL', max_length=255)
     thumbnail = ImageField('Sigla', max_length=255)
+    active = BooleanField('Ativo')
 
     class Meta:
         verbose_name = "Campus"
