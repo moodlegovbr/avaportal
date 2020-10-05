@@ -2,7 +2,6 @@ from django.utils.translation import gettext as _
 from django.conf import settings
 from django.db.models import Model, ForeignKey, CASCADE, TextChoices
 from django.db.models import CharField, URLField, ImageField, DateTimeField, TextField
-from django.db.models import JSONField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -28,11 +27,11 @@ class Solicitacao(Model):
         SUCESSO = 'Sucesso', _('Sucesso')
         FALHA = 'Falha', _('Falha')
     timestamp = DateTimeField('Quando ocorreu', auto_now_add=False)
-    requisicao = JSONField('Requisição', null=True, blank=True)
-    requisicao_header = JSONField('Cabeçalho da requisição', null=True, blank=True)
+    requisicao = TextField('Requisição', null=True, blank=True)
+    requisicao_header = TextField('Cabeçalho da requisição', null=True, blank=True)
     requisicao_invalida = TextField('Requisição inválida', null=True, blank=True)
-    resposta = JSONField('Resposta', null=True, blank=True)
-    resposta_header = JSONField('Cabeçalho da resposta', null=True, blank=True)
+    resposta = TextField('Resposta', null=True, blank=True)
+    resposta_header = TextField('Cabeçalho da resposta', null=True, blank=True)
     resposta_invalida = TextField('Resposta inválida', null=True, blank=True)
     campus = ForeignKey(Campus, on_delete=CASCADE, verbose_name="Campus", null=True, blank=True)
     status = CharField(_("Kind"), max_length=255, choices=Status.choices, null=True, blank=True)
