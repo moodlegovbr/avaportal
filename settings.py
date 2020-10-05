@@ -70,7 +70,7 @@ TABBED_ADMIN_USE_JQUERY_UI = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': env('DJANGO_SQLITE_FILENAME', BASE_DIR / 'db.sqlite3'),
     }
 }
 
