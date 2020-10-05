@@ -1,7 +1,12 @@
 from pathlib import Path
 from sc4py.env import env, env_as_bool, env_as_int, env_as_list
 
+
+BASE_DIR = Path(__file__).resolve().parent
+
+
 DEBUG = env_as_bool("DJANGO_DEBUG", False)
+
 
 # Apps
 MY_APPS = env_as_list('MY_APPS', 'avaportal,suap_ead')
@@ -64,12 +69,8 @@ TABBED_ADMIN_USE_JQUERY_UI = True
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': env('POSTGRES_ENGINE', 'django.db.backends.postgresql_psycopg2'),
-        'HOST': env('POSTGRES_HOST', 'db'),
-        'PORT': env('POSTGRES_PORT', '5432'),
-        'NAME': env('POSTGRES_DB', 'sead_avaportal_db'),
-        'USER': env('POSTGRES_USER', 'sead_avaportal_user'),
-        'PASSWORD': env('POSTGRES_PASSWORD', 'sead_avaportal_pass'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
