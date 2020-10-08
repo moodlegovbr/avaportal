@@ -11,7 +11,7 @@ class Campus(Model):
     sigla = CharField('Sigla', max_length=255, unique=True)
     descricao = CharField('Descrição', max_length=255)
     url = URLField('URL', max_length=255)
-    thumbnail = ImageField('Sigla', max_length=255)
+    thumbnail = ImageField('Thumbnail', max_length=255)
     active = BooleanField('Ativo')
 
     class Meta:
@@ -27,7 +27,7 @@ class Solicitacao(Model):
     class Status(TextChoices):
         SUCESSO = 'Sucesso', _('Sucesso')
         FALHA = 'Falha', _('Falha')
-    timestamp = DateTimeField('Quando ocorreu', auto_now_add=False)
+    timestamp = DateTimeField('Quando ocorreu', auto_now_add=True)
     requisicao = TextField('Requisição', null=True, blank=True)
     requisicao_header = TextField('Cabeçalho da requisição', null=True, blank=True)
     requisicao_invalida = TextField('Requisição inválida', null=True, blank=True)
@@ -35,7 +35,7 @@ class Solicitacao(Model):
     resposta_header = TextField('Cabeçalho da resposta', null=True, blank=True)
     resposta_invalida = TextField('Resposta inválida', null=True, blank=True)
     campus = ForeignKey(Campus, on_delete=CASCADE, verbose_name="Campus", null=True, blank=True)
-    status = CharField(_("Kind"), max_length=255, choices=Status.choices, null=True, blank=True)
+    status = CharField(_("Status"), max_length=255, choices=Status.choices, null=True, blank=True)
 
     class Meta:
         verbose_name = "Solicitação"
