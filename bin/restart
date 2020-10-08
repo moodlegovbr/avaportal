@@ -1,0 +1,7 @@
+#!/bin/bash
+source functions
+
+./down $@
+./db/up
+./up -d $@
+

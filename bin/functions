@@ -1,0 +1,59 @@
+#!/bin/bash
+GREEN_COLOR='\033[1;32m'
+ORANGE_COLOR='\033[0;33m'
+RED_COLOR='\033[0;31m'
+BLUE_COLOR='\033[1;34m'
+NO_COLOR='\033[0m'
+
+SERVICE_NAME=$(basename $(dirname $0))
+
+pwd=$(pwd -P)
+
+if [[ ! -f .env ]]; then
+  cp example.env .env
+fi
+
+source "$pwd/.env"
+
+echo_warning() {
+  echo ${@:3} -e "$ORANGE_COLOR WARN: $(date +\"%F\ %T\") $1$NO_COLOR"
+}
+
+echo_danger() {
+  echo ${@:3} -e "$RED_COLOR DANG: $(date +\"%F\ %T\") $1$NO_COLOR"
+}
+
+echo_info() {
+  echo ${@:3} -e "$BLUE_COLOR INFO: $(date +\"%F\ %T\") $1$NO_COLOR"
+}
+
+echo_success() {
+  echo ${@:3} -e "$GREEN_COLOR SUCC: $(date +\"%F\ %T\") $1$NO_COLOR"
+}
+
+clone_repository() {
+  source=$1
+  destin=$2
+  branch=$3
+  if [ -d "$destin" ]; then
+    echo_info "Skipping $destin" 
+  else
+    echo_info "Cloning to $destin" 
+    git clone $source $destin
+  fi
+  if [ "$branch" ]; then
+    git checkout -b $branch origin/$branch
+  fi
+  cd $SEAD_HOME/bin
+}
+
+
+clone_repositories() {
+  echo_info "Cloning repositories"
+
+  clone_repository git@github.com:suap-ead/lib_suap_ead.git $SEAD_HOME/libs/suap_ead
+  clone_repository git@github.com:suap-ead/docker_base.git $SEAD_HOME/dockers/base
+  clone_repository git@github.com:suap-ead/app_id.git $SEAD_HOME/apps/id
+  clone_repository git@github.com:suap-ead/app_dashboard.git $SEAD_HOME/apps/dashboard
+  clone_repository git@github.com:suap-ead/ege_preinscricao.git $SEAD_HOME/apps/pre_matricula
+}

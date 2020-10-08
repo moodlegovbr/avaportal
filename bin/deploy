@@ -1,0 +1,55 @@
+#!/bin/bash
+
+source functions
+
+echo ""
+echo_info "Parar o mundo"
+# ./down
+
+# echo ""
+# echo_info "Subir o banco"
+# ./db/up
+# ./db/wait
+
+echo ""
+echo_info "Migrar os bancos..."
+
+echo ""
+echo_info "... id"
+./id/migrate
+
+echo ""
+echo_info "... dashboard"
+./dashboard/migrate
+
+echo ""
+echo_info "... pre_matricula"
+./pre_matricula/deploy
+
+# echo ""
+# echo_info "... baggins"
+# ./baggins/migrate
+
+
+# echo ""
+# echo_info "... seletivo"
+# ./seletivo/migrate
+
+# echo ""
+# echo_info "... selecao"
+# ./selecao/migrate
+
+# echo ""
+# echo_info "... integrador_ui"
+# ./integrador_ui/migrate
+
+# echo ""
+# echo_info "Iniciando o ambiente de desenvolvimento"
+# ./id/run ./manage.sh init_dev
+
+echo ""
+echo_info "Reiniciando o mundo novamente"
+./restart
+
+echo ""
+echo_success "Tudo pronto"

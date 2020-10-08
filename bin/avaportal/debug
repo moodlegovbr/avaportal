@@ -1,0 +1,4 @@
+#!/bin/bash
+source functions
+
+docker-compose run --service-ports $SERVICE_NAME $@

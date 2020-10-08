@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source functions
+source ../confs/db.env
+
+./db/up
+
+./db/exec psql -U $POSTGRES_USER $@
