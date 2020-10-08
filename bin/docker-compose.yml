@@ -6,8 +6,6 @@ services:
     image: postgres:12.4-alpine
     env_file:
       - ../confs/enabled/db.env
-    ports:
-      - "${POSTGRES_EXTERNAL_PORT}:5432"
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
 
