@@ -2,84 +2,23 @@ version: '3.7'
 
 services:
 
-  proxy:
-    image: nginx:1.17.8-alpine
-    ports:
-      - "${NGINX_EXTERNAL_PORT}:80"
-    volumes:
-      - "../confs/proxy:/etc/nginx/conf.d"
-
   db:
     image: postgres:12.4-alpine
     env_file:
-      - ../confs/db.env
+      - ../confs/enabled/db.env
     ports:
       - "${POSTGRES_EXTERNAL_PORT}:5432"
     volumes:
       - "../volumes/pgdata:/var/lib/postgresql/data"
-
-  redis:
-    image: redis:5.0-alpine
-    command: redis-server --requirepass redis_password
 
   avaportal:
     image: 'ifrn/suap_ead_base:1.5.14'
     ports:
       - "80:8000"
     env_file:
-      - ../confs/db.env
-      - ../confs/suap_ead.env
-      - ../confs/avaportal.env
+      - ../confs/enabled/db.env
+      - ../confs/enabled/avaportal.env
     volumes:
-      - '../apps/avaportal:/apps/app'
-      - "../volumes/media/avaportal:/media/avaportal"
-      - "../volumes/static/avaportal:/static/avaportal"
-    
-  # baggins:
-  #   image: 'ifrn/suap_ead_base:1.5.14'
-  #   env_file:
-  #     - ../confs/db.env
-  #     - ../confs/suap_ead.env
-  #     - ../confs/baggins.env
-  #   volumes:
-  #     - '../apps/suap_ead_baggins:/apps/app'
-  #     - '../libs/:/libs/'
-
-  # # c_id:
-  # #   image: 'ifrn/suap_ead_base:1.5.14'
-  # #   env_file:
-  # #     - ../confs/db.env
-  # #     - ../confs/suap_ead.env
-  # #     - ../confs/c_id.env
-  # #   volumes:
-  # #     - '../apps/suap_ead_id:/apps/app'
-  # #     - '../libs/:/libs/'
-  
-  # # integrador_ui:
-  # #   image: 'ifrn/suap_ead_base:1.5.14'
-  # #   env_file:
-  # #     - ../confs/suap_ead.env
-  # #     - ../confs/integrador_ui.env
-  # #   volumes:
-  # #     - '../apps/suap_ead_integrador_ui:/apps/app'
-  # #     - '../libs/:/libs/'
-
-  # # seletivo:
-  # #   image: 'ifrn/suap_ead_base:1.5.14'
-  # #   env_file:
-  # #     - ../confs/db.env
-  # #     - ../confs/suap_ead.env
-  # #     - ../confs/seletivo.env
-  # #   volumes:
-  # #     - '../apps/suap_ead_seletivo:/apps/app'
-  # #     - '../libs/:/libs/'
-
-  # # selecao:
-  # #   image: 'ifrn/suap_ead_base:1.5.14'
-  # #   env_file:
-  # #     - ../confs/db.env
-  # #     - ../confs/suap_ead.env
-  # #     - ../confs/selecao.env
-  # #   volumes:
-  # #     - '../apps/suap_ead_selecao:/apps/app'
-  # #     - '../libs/:/libs/'
+      - '../src:/apps/app'
+      - "../volumes/media:/var/media"
+      - "../volumes/static:/var/static"
