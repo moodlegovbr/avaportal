@@ -69,8 +69,12 @@ TABBED_ADMIN_USE_JQUERY_UI = True
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': env('DJANGO_SQLITE_FILENAME', BASE_DIR / 'db.sqlite3'),
+        'ENGINE': env('POSTGRES_ENGINE', 'django.db.backends.postgresql_psycopg2'),
+        'HOST': env('POSTGRES_HOST', 'db'),
+        'PORT': env('POSTGRES_PORT', '5432'),
+        'NAME': env('POSTGRES_DATABASE', 'postgres'),
+        'USER': env('POSTGRES_USER', 'ava_user'),
+        'PASSWORD': env('POSTGRES_PASSWORD', 'ava_pass'),
     }
 }
 
