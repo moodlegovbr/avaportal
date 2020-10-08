@@ -2,6 +2,4 @@
 source functions
 
 ./db/restart
-./proxy/restart
-./redis/restart
 
