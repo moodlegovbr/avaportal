@@ -37,4 +37,7 @@ cd $AP_HOME/bin
 # ./avaportal/debug
 ```
 
-O serviço estará disponível em http://localhost/
+O serviço estará disponível em http://localhost/ e será parecido com o que se vê abaixo:
+
+
+![Alt text](screenshot.png?raw=true "Screenshot")
