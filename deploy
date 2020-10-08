@@ -1,9 +1,0 @@
-#!/bin/sh
-
-USER="admin"
-EMAIL="admin@example.com"
-PASS="admin"
-
-./manage.py migrate
-./fixtures
-./manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('${USER}', '${EMAIL}', '${PASS}')"
