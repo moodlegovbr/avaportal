@@ -10,8 +10,9 @@ class CampusAdmin(ModelAdmin):
 
 @register(Solicitacao)
 class SolicitacaoAdmin(ModelAdmin):
-    list_display = ['campus', 'status', 'timestamp']
+    list_display = ['timestamp', 'status', 'status_code', 'campus', 'resposta']
     search_fields = ['campus', 'requisicao', 'requisicao_invalida', 'requisicao_header', 'resposta', 'resposta_header', 'resposta_invalida']
     autocomplete_fields = ['campus']
     date_hierarchy = 'timestamp'
-    list_filter = ['status', 'campus']
+    list_filter = ['status', 'status_code', 'campus']
+
