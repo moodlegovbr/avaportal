@@ -9,6 +9,7 @@ urlpatterns = [
     path('oauth/', include('social_django.urls', namespace='social')),
     path('admin/login/', RedirectView.as_view(url='/oauth/login/suap/')),
     path('admin/', admin.site.urls),
+    path('api/moodle_suap/', sync_up),
     path('ava/barramento/api/moodle_suap/', sync_up), 
     path('', index),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
