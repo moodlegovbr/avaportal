@@ -12,6 +12,9 @@ PyYAML==5.3.1
 # Auth
 django-python3-ldap==0.11.3
 
+# Image
+qrcode==6.1
+
 # Session
 django-redis-sessions==0.6.1
 

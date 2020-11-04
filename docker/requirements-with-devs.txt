@@ -1,0 +1,8 @@
+# Database
+psycopg2-binary==2.8.6
+
+# Image
+pillow==7.2.0
+
+# Auth
+social-auth-app-django==4.0.0
