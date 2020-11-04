@@ -37,7 +37,7 @@
     <!-- Cabeçalho da Página -->
     <header class="p-5">
         <div class="container text-center">
-		<a href="https://portal.ifrn.edu.br" target="_blank"><img src="{% static 'img/logo_ifrn2.png' %}" alt="Logo IFRN"></a>
+		<a href="https://portal.ifrn.edu.br" target="_blank"><img src="{% static 'img/logo_ifrn.png' %}" alt="Logo IFRN"></a>
         </div>
     </header>
     <!-- Cabeçalho da Página -->
@@ -81,7 +81,7 @@
             {% for campi in campus %}
             <div class="col-md-3">
                 <div class="card mb-3">
-                    <a href="{{campi.url}}"><img src="{% media campi.thumbnail %}" class="card-img-top" alt="Foto do campus {{campi.descricao}}"></a>
+                    <a href="{{campi.url}}"><img src="{{campi.thumbnail.url}}" class="card-img-top" alt="Foto do campus {{campi.descricao}}"></a>
                     <div class="card-body">
                         <h5 class="card-title">{{campi.descricao}}</h5>
                         <a href="{{campi.url}}" class="btn btn-primary">Acessar Moodle</a>

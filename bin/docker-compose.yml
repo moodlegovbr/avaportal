@@ -9,6 +9,7 @@ services:
     volumes:
       - "../confs/enabled/proxy:/etc/nginx/conf.d"
       - "../volumes/static:/var/static"
+      - "../volumes/media:/var/media"
 
   db:
     image: postgres:12.4-alpine
