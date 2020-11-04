@@ -1,6 +1,4 @@
 {% load static %}
-{% get_static_prefix as STATIC_PREFIX %}
-{% get_media_prefix as MEDIA_PREFIX  %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,21 +9,23 @@
     <title>Ambiente Virtual de Aprendizagem - AVA / IFRN</title>
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{STATIC_PREFIX}}img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{STATIC_PREFIX}}img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{STATIC_PREFIX}}img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="{{STATIC_PREFIX}}img/favicon/site.webmanifest">
-    <link rel="mask-icon" href="{{STATIC_PREFIX}}img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/favicon/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'img/favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Favicon -->
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{STATIC_PREFIX}}css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
+/*
         .navbar-nav .nav-item > .nav-link { color: #eee; }
         .navbar.navbar-expand-lg.navbar-light.bg-light.mb-5 { background: #1571c4 !important; }
         .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover { color: #fff; background: #0e7bdd;}
+*/
         .card-img-top {opacity: 90%;}
         .card-img-top:hover {opacity: 100%;}
     </style>
@@ -37,7 +37,7 @@
     <!-- Cabeçalho da Página -->
     <header class="p-5">
         <div class="container text-center">
-            <a href="https://portal.ifrn.edu.br" target="_blank"><img src="{{STATIC_PREFIX}}img/logo_ifrn.png" alt="Logo IFRN"></a>
+		<a href="https://portal.ifrn.edu.br" target="_blank"><img src="{% static 'img/logo_ifrn2.png' %}" alt="Logo IFRN"></a>
         </div>
     </header>
     <!-- Cabeçalho da Página -->
@@ -63,7 +63,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             {% for campi in campus %}
                             <a class="dropdown-item" href="{{campi.url}}">{{campi.descricao}}</a>
-                            {% endfor %}                            
+                            {% endfor %}
                         </div>
                     </li>
                 </ul>
@@ -81,7 +81,7 @@
             {% for campi in campus %}
             <div class="col-md-3">
                 <div class="card mb-3">
-                    <a href="{{campi.url}}"><img src="{{MEDIA_PREFIX}}{{campi.thumbnail}}" class="card-img-top" alt="Foto do campus {{campi.descricao}}"></a>
+                    <a href="{{campi.url}}"><img src="{% media campi.thumbnail %}" class="card-img-top" alt="Foto do campus {{campi.descricao}}"></a>
                     <div class="card-body">
                         <h5 class="card-title">{{campi.descricao}}</h5>
                         <a href="{{campi.url}}" class="btn btn-primary">Acessar Moodle</a>
@@ -102,7 +102,7 @@
                     <p>Todos os direitos reservados</p>
                 </div>
                 <div class="col-md-3">
-                    <a href="https://portal.ifrn.edu.br/tec-da-informacao" target="_blank"><img src="{{STATIC_PREFIX}}img/logo_digti.png" alt="Logo DIGTI" width="75"></a>
+			<a href="https://portal.ifrn.edu.br/tec-da-informacao" target="_blank"><img src="{% static 'img/logo_digti.png' %}" alt="Logo DIGTI" width="75"></a>
                 </div>
             </div>
         </div>
@@ -110,8 +110,9 @@
     <!-- Rodapé da Página -->
 
     <!-- jQuery + JS do Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="{{STATIC_PREFIX}}js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- jQuery + JS do Bootstrap -->
 
 </body>
