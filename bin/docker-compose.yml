@@ -2,6 +2,14 @@ version: '3.7'
 
 services:
 
+  proxy:
+    image: nginx:1.19.2-alpine
+    ports:
+      - "${NGINX_EXTERNAL_PORT}:80"
+    volumes:
+      - "../confs/enabled/proxy:/etc/nginx/conf.d"
+      - "../volumes/static:/var/static"
+
   db:
     image: postgres:12.4-alpine
     env_file:
@@ -12,7 +20,7 @@ services:
   avaportal:
     image: 'ifrn/avaportal:1.0.0'
     ports:
-      - "80:8000"
+      - "7001:8000"
     env_file:
       - ../confs/enabled/db.env
       - ../confs/enabled/avaportal.env
