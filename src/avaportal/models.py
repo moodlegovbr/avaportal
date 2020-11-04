@@ -18,7 +18,7 @@ class Campus(Model):
     class Meta:
         verbose_name = "Campus"
         verbose_name_plural = "Campi"
-        ordering = ['sigla']
+        ordering = ['descricao']
 
     def __str__(self):
         return f'{self.sigla} - {self.descricao}'
