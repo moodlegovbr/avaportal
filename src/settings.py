@@ -48,7 +48,7 @@ INSTALLED_APPS = MY_APPS + THIRD_APPS + DJANGO_APPS
 
 # Middleware
 MIDDLEWARE = [
-    'avaportal.middleware.GoToHTTPSMiddleware',
+    'avaportal.middleware.GoToHTTPSMiddleware', # <-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -182,3 +182,4 @@ LOGIN_REDIRECT_URL = env('DJANGO_LOGIN_REDIRECT_URL', '/admin/')
 # LOGOUT_REDIRECT_URL = env("DJANGO_LOGOUT_REDIRECT_URL", LOGIN_REDIRECT_URL)
 AUTH_USER_MODEL = env('DJANGO_AUTH_USER_MODEL', 'auth.User')
 SUAP_EAD_KEY = env('SUAP_EAD_KEY', 'changeme')
+GO_TO_HTTPS = env_as_bool('GO_TO_HTTPS', False)
