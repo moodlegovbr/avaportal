@@ -1,6 +1,7 @@
 from pathlib import Path
 from sc4py.env import env, env_as_bool, env_as_int, env_as_list
-import logging
+import logging.config
+
 
 
 BASE_DIR = Path(__file__).resolve().parent
