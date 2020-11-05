@@ -4,6 +4,7 @@ from django.db.models import Model, ForeignKey, CASCADE, TextChoices, BooleanFie
 from django.db.models import CharField, URLField, ImageField, DateTimeField, TextField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+import qrcode
 
 
 class Campus(Model):
@@ -22,6 +23,13 @@ class Campus(Model):
 
     def __str__(self):
         return f'{self.sigla} - {self.descricao}'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = qrcode.make(self.url)
+        lsigla = self.sigla.lower()
+        img.save(f"{settings.MEDIA_ROOT}/qrcode_{lsigla}.png")
+
 
 
 class Solicitacao(Model):
