@@ -87,11 +87,13 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends', # <-
                 'social_django.context_processors.login_redirect', # <-
+                'avaportal.context_processors.gtag', # <-
             ]
         },
     },
 ]
 TABBED_ADMIN_USE_JQUERY_UI = True
+GTAG_UI = env("GTAG_UI", None)
 
 
 # Database
