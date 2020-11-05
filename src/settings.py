@@ -1,5 +1,6 @@
 from pathlib import Path
 from sc4py.env import env, env_as_bool, env_as_int, env_as_list
+import logging
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -7,6 +8,31 @@ BASE_DIR = Path(__file__).resolve().parent
 
 DEBUG = env_as_bool("DJANGO_DEBUG", False)
 
+
+# Get loglevel from env
+LOGLEVEL = env('DJANGO_LOGLEVEL', 'DEBUG').upper()
+
+logging.config.dictConfig({
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console',
+        },
+    },
+    'loggers': {
+        '': {
+            'level': LOGLEVEL,
+            'handlers': ['console',],
+        },
+    },
+})
 
 # Apps
 MY_APPS = env_as_list('MY_APPS', 'avaportal,suap_ead')
@@ -22,6 +48,7 @@ INSTALLED_APPS = MY_APPS + THIRD_APPS + DJANGO_APPS
 
 # Middleware
 MIDDLEWARE = [
+    'avaportal.middleware.GoToHTTPSMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
