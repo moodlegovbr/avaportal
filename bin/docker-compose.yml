@@ -19,7 +19,7 @@ services:
       - "../volumes/pgdata:/var/lib/postgresql/data"
 
   avaportal:
-    image: 'ifrn/avaportal:1.0.0'
+    image: 'ifrn/avaportal:1.0.3'
     ports:
       - "7001:8000"
     env_file:
