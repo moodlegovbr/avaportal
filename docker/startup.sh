@@ -12,5 +12,6 @@ else
         --timeout $GUNICORN_TIMEOUT \
         --workers $GUNICORN_NUM_WORKERS \
         --log-level $GUNICORN_LOG_LEVEL \
+        --forwarded-allow-ips "*" \
         --log-file=-
 fi
